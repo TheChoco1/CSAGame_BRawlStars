@@ -2,7 +2,7 @@
  
 # Roadmap
 
-* Title Screen
+* Title Screen ✓
 * Improve render performance
 * Monsters
 * Monster hit detection
