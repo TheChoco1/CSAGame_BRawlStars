@@ -46,8 +46,8 @@ public class Player extends Entity {
 	public void getPlayerImage() {
 		up1 = setupPlayer("boy_up_1");
 		up2 = setupPlayer("boy_up_2");
-		down1 = setupPlayer("boy_down_1");
-		down2 = setupPlayer("boy_down_2");
+		down1 = setupPlayer("shelly_down_1");
+		down2 = setupPlayer("shelly_down_2");
 		left1 = setupPlayer("boy_left_1");
 		left2 = setupPlayer("boy_left_2");
 		right1 = setupPlayer("boy_right_1");
