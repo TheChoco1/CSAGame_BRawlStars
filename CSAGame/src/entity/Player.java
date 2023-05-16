@@ -18,8 +18,9 @@ public class Player extends Entity {
 	public final int screenX;
 	public final int screenY;
 	
-	public Player(GamePanel gp, KeyHandler keyH) {
-		super(gp);
+	public Player(GamePanel gp1, KeyHandler keyH) {
+		super(gp1);
+		gp = gp1;
 		this.keyH = keyH;
 		
 		screenX = gp.screenWidth/2 - (gp.tileSize/2);
@@ -31,7 +32,6 @@ public class Player extends Entity {
 		solidArea.width = 32;
 		solidArea.height = 32;
 		
-		setDefaultValues();
 		getPlayerImage();
 	}
 	

@@ -26,7 +26,4 @@ public class Entity {
 	public Entity(GamePanel gp) {
 		this.gp = gp;
 	}
-	
-
-	
 }
