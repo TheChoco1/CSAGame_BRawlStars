@@ -3,6 +3,8 @@ package entity;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import main.GamePanel;
+
 public class Entity {
 	
 	public int worldX, worldY;
@@ -17,5 +19,23 @@ public class Entity {
 	
 	public Rectangle solidArea;
 	public boolean collisionOn = false;
+	
+	public GamePanel gp;
+	
+	public Entity(GamePanel gp) {
+		this.gp = gp;
+	}
+	
+	public BufferedImage setup(String image_name) {
+		UtilityTool uT = new UtilityTool();
+		BufferedImage image = null;
+		
+		try {
+			
+		} catch() {
+			
+		}
+		return null;
+	}
 	
 }

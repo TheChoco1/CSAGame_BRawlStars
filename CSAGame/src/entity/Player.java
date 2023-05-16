@@ -18,7 +18,7 @@ public class Player extends Entity {
 	public final int screenY;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
-		this.gp = gp;
+		super(gp);
 		this.keyH = keyH;
 		
 		screenX = gp.screenWidth/2 - (gp.tileSize/2);
