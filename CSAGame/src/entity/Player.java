@@ -9,9 +9,10 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.Util;
 
 public class Player extends Entity {
-	GamePanel gp;
+	public GamePanel gp;
 	KeyHandler keyH;
 	
 	public final int screenX;
@@ -42,18 +43,28 @@ public class Player extends Entity {
 	}
 	
 	public void getPlayerImage() {
+		up1 = setupPlayer("boy_up_1");
+		up2 = setupPlayer("boy_up_2");
+		down1 = setupPlayer("boy_down_1");
+		down2 = setupPlayer("boy_down_2");
+		left1 = setupPlayer("boy_left_1");
+		left2 = setupPlayer("boy_left_2");
+		right1 = setupPlayer("boy_right_1");
+		right2 = setupPlayer("boy_right_2");
+	}
+	
+	public BufferedImage setupPlayer(String name) {
+		BufferedImage scaledImage = null;
+		Util u = new Util();
+		
 		try {
-			up1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_1.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_2.png"));
-			down1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_1.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_2.png"));
-			left1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_1.png"));
-			left2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_2.png"));
-			right1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_1.png"));
-			right2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_2.png"));
+			scaledImage = ImageIO.read(getClass().getResourceAsStream("/player/" + name + ".png"));
+			scaledImage = u.scaleImage(scaledImage, gp.tileSize, gp.tileSize);
+			
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
+		return scaledImage;
 	}
 	
 	public void update() {
@@ -142,7 +153,7 @@ public class Player extends Entity {
 			}
 			break;
 		}
-		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, null);
 		
 	}
 }

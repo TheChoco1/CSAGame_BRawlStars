@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 import main.GamePanel;
 
+
 public class Entity {
 	
 	public int worldX, worldY;
@@ -26,16 +27,6 @@ public class Entity {
 		this.gp = gp;
 	}
 	
-	public BufferedImage setup(String image_name) {
-		UtilityTool uT = new UtilityTool();
-		BufferedImage image = null;
-		
-		try {
-			
-		} catch() {
-			
-		}
-		return null;
-	}
+
 	
 }
