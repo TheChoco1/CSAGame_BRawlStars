@@ -7,7 +7,9 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import entity.Entity;
 import entity.Player;
+import monster.MON_GreenSlime;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -28,12 +30,17 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	int FPS = 60;
 	
-	TileManager tileM = new TileManager(this);
-	KeyHandler keyH = new KeyHandler(this);
-	Thread gameThread;
+	public TileManager tileM = new TileManager(this);
+	public KeyHandler keyH = new KeyHandler(this);
 	public CollisionHandler cHand = new CollisionHandler(this);
+	public AssetPlacement aP = new AssetPlacement(this);
+	Thread gameThread;
+	
 	public UI ui = new UI(this);
+	
 	public Player player = new Player(this, keyH);
+	public Entity monster[] = new Entity[2];
+	
 	public Util u = new Util();
 	
 	public int gameState;
@@ -53,6 +60,8 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	public void setupGame() {
 		gameState = titleState;
+		aP.setMonster();
+		
 	}
 	
 	public void startGameThread() {

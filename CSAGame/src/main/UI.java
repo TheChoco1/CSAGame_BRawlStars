@@ -39,9 +39,9 @@ public class UI {
 	}
 	public void drawTitleScreen() {
 		if(titleScreenState == 0) {
-			g2.setColor(new Color(0,0,0));
+			g2.setColor(new Color(100, 100, 100));
 			g2.fillRect(0,0, gp.screenWidth,gp.screenHeight);
-			//Title NAme
+			//Title Name
 			g2.setFont(arial_80.deriveFont(Font.BOLD,56F));
 			String text = "Brawl Stars But Scuffed";
 			int x = getXforCenteredText(text);
@@ -56,7 +56,7 @@ public class UI {
 			//IMAGE displayed
 			x = gp.screenWidth/2 - (gp.tileSize*2)/2;//center point
 			y += gp.tileSize*2;
-			g2.drawImage(gp.player.down1,x,y,gp.tileSize*2, gp.tileSize*2,null);
+			g2.drawImage(gp.player.stand,x,y,gp.tileSize*2, gp.tileSize*2,null);
 					
 			//MENU
 			g2.setFont(arial_80.deriveFont(Font.BOLD,40F));

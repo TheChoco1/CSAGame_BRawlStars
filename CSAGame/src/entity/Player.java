@@ -40,33 +40,22 @@ public class Player extends Entity {
 		worldX = gp.tileSize * 23;
 		worldY = gp.tileSize * 21;
 		speed = 4;
-		direction = "down";
+		direction = "down1";
 	}
 	
 	public void getPlayerImage() {
-		up1 = setupPlayer("boy_up_1");
-		up2 = setupPlayer("boy_up_2");
-		down1 = setupPlayer("shelly_down_1");
-		down2 = setupPlayer("shelly_down_2");
-		left1 = setupPlayer("boy_left_1");
-		left2 = setupPlayer("boy_left_2");
-		right1 = setupPlayer("boy_right_1");
-		right2 = setupPlayer("boy_right_2");
+		stand = setup("/player/shelly_standing");
+		up1 = setup("/player/boy_up_1");
+		up2 = setup("/player/boy_up_2");
+		down1 = setup("/player/shelly_down_1");
+		down2 = setup("/player/shelly_down_2");
+		left1 = setup("/player/boy_left_1");
+		left2 = setup("/player/boy_left_2");
+		right1 = setup("/player/boy_right_1");
+		right2 = setup("/player/boy_right_2");
 	}
 	
-	public BufferedImage setupPlayer(String name) {
-		BufferedImage scaledImage = null;
-		Util u = new Util();
-		
-		try {
-			scaledImage = ImageIO.read(getClass().getResourceAsStream("/player/" + name + ".png"));
-			scaledImage = u.scaleImage(scaledImage, gp.tileSize, gp.tileSize);
-			
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		return scaledImage;
-	}
+
 	
 	public void update() {
 		if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
@@ -114,11 +103,14 @@ public class Player extends Entity {
 				}
 				spriteCounter = 0;
 			}
-		}
+		} //else {
+//			direction = "standing";
+//			
+//		}
 	}
 	
 	public void draw(Graphics2D g2) {
-		BufferedImage image = null;
+		BufferedImage image = down1;
 		
 		switch(direction) {
 		case "up":
@@ -153,6 +145,9 @@ public class Player extends Entity {
 				image = right2;
 			}
 			break;
+//		case "standing":
+//			image = stand;
+//			break;
 		}
 		g2.drawImage(image, screenX, screenY, null);
 		
