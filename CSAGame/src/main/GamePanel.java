@@ -39,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public UI ui = new UI(this);
 	
 	public Player player = new Player(this, keyH);
-	public Entity monster[] = new Entity[2];
+	public Entity monster[] = new Entity[1];
 	
 	public Util u = new Util();
 	
@@ -130,7 +130,7 @@ public class GamePanel extends JPanel implements Runnable {
 			
 			ui.draw(g2);
 			
-			for (int i = 0; i < monster.length; i++) ((Player) monster[i]).draw(g2);
+			monster[0].draw(g2, this.tileSize*23, this.tileSize*22);
 		}
 		
 		

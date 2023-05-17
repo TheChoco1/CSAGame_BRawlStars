@@ -1,14 +1,17 @@
 package monster;
 
 import java.awt.Graphics2D;
+import java.awt.Shape;
 import java.awt.image.BufferedImage;
 
 import entity.Entity;
+import main.AssetPlacement;
 import main.GamePanel;
 
 public class MON_GreenSlime extends Entity {
 	
 	GamePanel gp;
+	AssetPlacement ap;
 
 	public MON_GreenSlime(GamePanel gp1) {
 		super(gp1);
@@ -28,6 +31,7 @@ public class MON_GreenSlime extends Entity {
 		solidAreaDefaultY = solidArea.y;
 		
 		getMonsterImage();
+		moveNPC();
 	}
 	
 	public void getMonsterImage() {
@@ -43,8 +47,9 @@ public class MON_GreenSlime extends Entity {
 
 	}
 	
-	public void draw(Graphics2D g2) {
+	public void draw(Graphics2D g2, int x, int y) {
 		BufferedImage image = down1;
+		moveNPC();
 		
 		switch(direction) {
 		case "up":
@@ -83,6 +88,8 @@ public class MON_GreenSlime extends Entity {
 //			image = stand;
 //			break;
 		}
+		g2.drawImage(image, x, y, null);
+		
 	}
 	
 

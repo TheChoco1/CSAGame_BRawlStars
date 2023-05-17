@@ -15,16 +15,12 @@ public class Player extends Entity {
 	public GamePanel gp;
 	KeyHandler keyH;
 	
-	public final int screenX;
-	public final int screenY;
+
 	
 	public Player(GamePanel gp1, KeyHandler keyH) {
 		super(gp1);
 		gp = gp1;
 		this.keyH = keyH;
-		
-		screenX = gp.screenWidth/2 - (gp.tileSize/2);
-		screenY = gp.screenHeight/2 - (gp.tileSize/2);
 		
 		solidArea = new Rectangle();
 		solidArea.x = 8;
@@ -152,4 +148,5 @@ public class Player extends Entity {
 		g2.drawImage(image, screenX, screenY, null);
 		
 	}
+
 }

@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -15,11 +16,13 @@ public class Entity {
 	
 	public GamePanel gp;
 	
+	public final int screenX;
+	public final int screenY;
 	public int worldX, worldY;
 	public int speed;
 	
 	public BufferedImage stand, up1, up2, down1, down2, left1, left2, right1, right2;
-	public String direction;
+	public String direction = "up";
 	
 	
 	public int spriteCounter = 0;
@@ -36,6 +39,8 @@ public class Entity {
 	
 	public Entity(GamePanel gp) {
 		this.gp = gp;
+		screenX = gp.screenWidth/2 - (gp.tileSize/2);
+		screenY = gp.screenHeight/2 - (gp.tileSize/2);
 	}
 	
 	public BufferedImage setup(String name) {
@@ -83,4 +88,50 @@ public class Entity {
 		collisionOn = false;
 		gp.cHand.checkTile(this);
 	}
+	
+	public void draw(Graphics2D g2, int x, int y) {
+		BufferedImage image = down1;
+		
+		switch(direction) {
+		case "up":
+			if (spriteNum == 1) {
+				image = up1;
+			}
+			if (spriteNum == 2) {
+				image = up2;
+			}
+			break;
+		case "down":
+			if (spriteNum == 1) {
+				image = down1;
+			}
+			if (spriteNum == 2) {
+				image = down2;
+			}
+			break;
+		case "left":
+			if (spriteNum == 1) {
+				image = left1;
+			}
+			if (spriteNum == 2) {
+				image = left2;
+			}
+			break;
+		case "right":
+			if (spriteNum == 1) {
+				image = right1;
+			}
+			if (spriteNum == 2) {
+				image = right2;
+			}
+			break;
+//		case "standing":
+//			image = stand;
+//			break;
+		}
+		g2.drawImage(image, screenX, screenY, null);
+		
+	}
+
+
 }
