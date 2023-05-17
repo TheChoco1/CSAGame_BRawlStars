@@ -103,6 +103,12 @@ public class GamePanel extends JPanel implements Runnable {
 		
 		if (gameState == playState) {
 			player.update();
+			
+			for (int i = 0; i < monster.length; i++) {
+				if (monster[i] != null) {
+					monster[i].update();
+				}
+			}
 		} 
 		if (gameState == pauseState) {
 			
@@ -123,6 +129,8 @@ public class GamePanel extends JPanel implements Runnable {
 			player.draw(g2);
 			
 			ui.draw(g2);
+			
+			for (int i = 0; i < monster.length; i++) ((Player) monster[i]).draw(g2);
 		}
 		
 		
