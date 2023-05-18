@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 import entity.Entity;
 import entity.Player;
-import monster.MON_GreenSlime;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -39,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public UI ui = new UI(this);
 	
 	public Player player = new Player(this, keyH);
-	public Entity monster[] = new Entity[1];
+	public Entity npc[] = new Entity[10];
 	
 	public Util u = new Util();
 	
@@ -59,8 +58,8 @@ public class GamePanel extends JPanel implements Runnable {
 
 	
 	public void setupGame() {
-		gameState = titleState;
-		aP.setMonster();
+		gameState = playState;
+		aP.setNPC();
 		
 	}
 	
@@ -103,12 +102,6 @@ public class GamePanel extends JPanel implements Runnable {
 		
 		if (gameState == playState) {
 			player.update();
-			
-			for (int i = 0; i < monster.length; i++) {
-				if (monster[i] != null) {
-					monster[i].update();
-				}
-			}
 		} 
 		if (gameState == pauseState) {
 			
@@ -126,11 +119,16 @@ public class GamePanel extends JPanel implements Runnable {
 			//Others(NPC, Objects)
 			tileM.draw(g2);
 			
+			for (int i = 0; i < npc.length; i++) {
+				if (npc[i] != null) {
+					npc[i].draw(g2);
+				}
+			}
+			
 			player.draw(g2);
 			
 			ui.draw(g2);
 			
-			monster[0].draw(g2, this.tileSize*23, this.tileSize*22);
 		}
 		
 		

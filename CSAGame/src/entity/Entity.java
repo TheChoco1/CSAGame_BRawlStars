@@ -43,6 +43,57 @@ public class Entity {
 		screenY = gp.screenHeight/2 - (gp.tileSize/2);
 	}
 	
+	public void draw(Graphics2D g2) {
+		
+		BufferedImage image = null;
+		
+		int screenX = worldX - gp.player.worldX + gp.player.screenX;
+		int screenY = worldY - gp.player.worldY + gp.player.screenY;
+		
+		if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+			worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+			worldY + gp.tileSize > gp.player.worldY - gp.player.worldY &&			
+			worldY - gp.tileSize < gp.player.worldY - gp.player.worldY) {
+			
+			switch(direction) {
+			case "up":
+				if (spriteNum == 1) {
+					image = up1;
+				}
+				if (spriteNum == 2) {
+					image = up2;
+				}
+				break;
+			case "down":
+				if (spriteNum == 1) {
+					image = down1;
+				}
+				if (spriteNum == 2) {
+					image = down2;
+				}
+				break;
+			case "left":
+				if (spriteNum == 1) {
+					image = left1;
+				}
+				if (spriteNum == 2) {
+					image = left2;
+				}
+				break;
+			case "right":
+				if (spriteNum == 1) {
+					image = right1;
+				}
+				if (spriteNum == 2) {
+					image = right2;
+				}
+				break;
+			}
+			g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		}
+			
+	}
+	
 	public BufferedImage setup(String name) {
 		BufferedImage scaledImage = null;
 		Util u = new Util();
@@ -57,81 +108,5 @@ public class Entity {
 		return scaledImage;
 	}
 	
-	public void moveNPC() {
-		
-		actionLockCounter++;
-		
-		if(actionLockCounter == 120) {
-			Random random = new Random();
-			int ran = random.nextInt(10);
-			
-			if (ran <= 2) {
-				direction = "up";
-			}
-			if (ran > 2 && ran <= 5) {
-				direction = "down";
-			}
-			if (ran > 5 && ran <=7) {
-				direction = "left";
-			}
-			if (ran > 7 && ran <= 10) {
-				direction = "right";
-			}
-			
-			actionLockCounter = 0;
-		}
-
-	}
-	public void update() {
-		moveNPC();
-		
-		collisionOn = false;
-		gp.cHand.checkTile(this);
-	}
-	
-	public void draw(Graphics2D g2, int x, int y) {
-		BufferedImage image = down1;
-		
-		switch(direction) {
-		case "up":
-			if (spriteNum == 1) {
-				image = up1;
-			}
-			if (spriteNum == 2) {
-				image = up2;
-			}
-			break;
-		case "down":
-			if (spriteNum == 1) {
-				image = down1;
-			}
-			if (spriteNum == 2) {
-				image = down2;
-			}
-			break;
-		case "left":
-			if (spriteNum == 1) {
-				image = left1;
-			}
-			if (spriteNum == 2) {
-				image = left2;
-			}
-			break;
-		case "right":
-			if (spriteNum == 1) {
-				image = right1;
-			}
-			if (spriteNum == 2) {
-				image = right2;
-			}
-			break;
-//		case "standing":
-//			image = stand;
-//			break;
-		}
-		g2.drawImage(image, screenX, screenY, null);
-		
-	}
-
 
 }

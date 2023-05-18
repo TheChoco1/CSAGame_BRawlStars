@@ -1,6 +1,6 @@
 package main;
 
-import monster.MON_GreenSlime;
+import entity.NPC;
 
 public class AssetPlacement {
 
@@ -10,10 +10,9 @@ public class AssetPlacement {
 		this.gp = gp;
 	}
 
-	public void setMonster() {
-		
-		gp.monster[0] = new MON_GreenSlime(gp);
-		gp.monster[0].worldX = gp.tileSize*21;
-		gp.monster[0].worldY = gp.tileSize*22;
+	public void setNPC() {
+		gp.npc[0] = new NPC(gp);
+		gp.npc[0].worldX = gp.tileSize*21;
+		gp.npc[0].worldY = gp.tileSize*21;
 	}
 }
